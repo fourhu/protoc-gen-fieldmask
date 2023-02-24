@@ -21,8 +21,7 @@
               if x.{{ $fmFieldName }} == nil {
                   x.{{ $fmFieldName }} = new(fieldmaskpb.FieldMask)
               }
-              x.{{ $fmFieldName }}.Append(_fm_{{ $messageName }}, "{{ $fieldPathKey }}")
-
+              x.{{ $fmFieldName }}.Append(_fm_{{ $inOut }}_{{ $messageName }}, "{{ $fieldPathKey }}")
               return x
         }
 

@@ -265,10 +265,17 @@ func (m *FieldMaskModule) consummate(
 			continue
 		}
 
+		var messageName string
+		outGen := pair.checkInMessageVO.FieldMaskOption.GetOut().GetGen()
 		outMessageName := pair.checkInMessageVO.FieldMaskOption.GetOut().GetMessage()
-		msg, importPath, pkgName, found := m.locateMessage(outMessageName, mm, packages)
+		if outGen && len(outMessageName) > 0 {
+			messageName = outMessageName
+		} else {
+			messageName = pair.InMessage.Name().String()
+		}
+		msg, importPath, pkgName, found := m.locateMessage(messageName, mm, packages)
 		if !found {
-			m.Debugf("message %s is not found", outMessageName)
+			m.Debugf("message %s is not found", messageName)
 			continue
 		}
 		ctx.FieldMaskPairs[idx].OutMessage = msg
@@ -294,8 +301,8 @@ func (m *FieldMaskModule) consummate(
 		}
 
 		// FIXED(@vaidasn): Generate out message vars only once per type #8
-		if _, dup := uniq[outMessageName]; !dup {
-			uniq[outMessageName] = struct{}{}
+		if _, dup := uniq[messageName]; !dup {
+			uniq[messageName] = struct{}{}
 			ctx.FieldMaskPairs[idx].GenOutMessageVar = true
 		}
 		filteredFmPairs = append(filteredFmPairs, ctx.FieldMaskPairs[idx])

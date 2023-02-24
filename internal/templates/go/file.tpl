@@ -3,14 +3,17 @@
 //  protoc-gen-fieldmask v0.4.1
 // source: {{ .File.InputPath }}
 
-package {{ pkg .File }}
+{{ $ThisPkgName := pkg .File }}
+package {{ $ThisPkgName }}
 
 import (
     pbfieldmask "github.com/yeqown/protoc-gen-fieldmask/proto/fieldmask"
     fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 
     {{ range $import := .ImportPaths }}
-        {{ $import.PkgName}} "{{$import.ImportPath}}"
+        {{ if ne $import.PkgName $ThisPkgName }}
+            {{ $import.PkgName}} "{{$import.ImportPath}}"
+        {{ end }}
     {{ end }}
 )
 

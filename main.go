@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/yeqown/protoc-gen-fieldmask/internal/module"
+	"github.com/fourhu/protoc-gen-fieldmask/internal/module"
 
 	pgs "github.com/lyft/protoc-gen-star"
 	pgsgo "github.com/lyft/protoc-gen-star/lang/go"

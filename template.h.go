@@ -4,8 +4,8 @@ import (
 	_ "embed"
 	"text/template"
 
-	"github.com/yeqown/protoc-gen-fieldmask/internal/templates"
-	"github.com/yeqown/protoc-gen-fieldmask/internal/templates/shared"
+	"github.com/fourhu/protoc-gen-fieldmask/internal/templates"
+	"github.com/fourhu/protoc-gen-fieldmask/internal/templates/shared"
 
 	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
 )

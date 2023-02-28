@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/yeqown/protoc-gen-fieldmask/internal/templates"
+	"github.com/fourhu/protoc-gen-fieldmask/internal/templates"
 )
 
 const (

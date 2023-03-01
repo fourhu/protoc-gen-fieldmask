@@ -35,6 +35,6 @@ import (
     {{ end }}
 
     {{ if eq $outGen true }}
-        {{ template "fm.out" . }}
+        {{ template "fm.out" dict "FieldMaskPairs" $pair "thisPkgName" $ThisPkgName }}
     {{ end }}
 {{ end }}

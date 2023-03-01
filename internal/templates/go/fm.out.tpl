@@ -14,7 +14,7 @@ var _fm_Out_{{ $messageName }} = new({{ $messageName }})
 var _fm_Out_{{ $messageName }} = new({{if $outMessagePkgName }}{{ $outMessagePkgName }}.{{end}}{{ $messageName }})
 {{ end }}
 {{ end }}
-{{ template "message" dict "Message" .OutMessage "inMessageName" $inMessageName "fmFieldName" $fmFieldName "inOut" "Out" "suffix" "" "pathSuffix" "" "messageName" $messageName }}
+{{ template "message" dict "Message" .FieldMaskPairs.OutMessage "inMessageName" $inMessageName "fmFieldName" $fmFieldName "inOut" "Out" "suffix" "" "pathSuffix" "" "messageName" $messageName }}
 
 // Mask only affects the fields in the {{ $inMessageName }}.
 {{ if eq $thisPackageName $outMessagePkgName }}

@@ -6,10 +6,13 @@
 
 {{ $messageName := .FieldMaskPairs.OutMessage.Name.UpperCamelCase }}
 
-{{ if .GenOutMessageVar }}
+{{ if .FieldMaskPairs.GenOutMessageVar }}
 // _fm_{{ $messageName }} is built in variable for {{ $messageName }} to call FieldMask.Append
+{{ if eq $thisPackageName $outMessagePkgName }}
+var _fm_Out_{{ $messageName }} = new({{ $messageName }})
+{{ else }}
 var _fm_Out_{{ $messageName }} = new({{if $outMessagePkgName }}{{ $outMessagePkgName }}.{{end}}{{ $messageName }})
-//var _fm_Out_{{ $messageName }} = new({{ $messageName }})
+{{ end }}
 {{ end }}
 {{ template "message" dict "Message" .OutMessage "inMessageName" $inMessageName "fmFieldName" $fmFieldName "inOut" "Out" "suffix" "" "pathSuffix" "" "messageName" $messageName }}
 

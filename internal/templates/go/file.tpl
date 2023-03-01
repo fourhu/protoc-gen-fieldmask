@@ -17,6 +17,12 @@ import (
     {{ end }}
 )
 
+
+var (
+	_ fieldmaskpb.FieldMask
+	_ pbfieldmask.FieldMask
+)
+
 {{ range $idx, $pair := .FieldMaskPairs }}
     {{ $inGen := false }}
     {{ if $pair.FieldMaskOption.In }}
